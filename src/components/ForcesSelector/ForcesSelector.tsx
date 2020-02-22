@@ -1,19 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "@material-ui/core/Button";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpaceShuttle, faUserAstronaut } from '@fortawesome/free-solid-svg-icons'
 
 const ForcesSelector = (props: any) => {
-
-  const { forceType } = props;
-
-  const ship = <FontAwesomeIcon icon={faSpaceShuttle} />;
-  const astronaut = <FontAwesomeIcon icon={faUserAstronaut} />
+  const { forceType, onClick } = props;
+  const handleClick = () => onClick(forceType);
+  const isShip = forceType === "ship";
+  const icon = isShip ? faSpaceShuttle : faUserAstronaut;
+  const wording = isShip ? 'Ships' : 'People';
 
   return (
-    <>
-      {forceType === "ship" ? (<Button variant="contained" color="primary">  Ships {ship}  </Button>) : (<Button variant="contained" color="primary"> Person {astronaut} </Button>)}
-    </>
+    <Button onClick={handleClick} variant="contained" color="primary" style={{ margin: "10px", padding: "10px" }}>
+      {wording} <FontAwesomeIcon icon={icon} style={{ margin: "5px"}} />
+    </Button>
   );
 };
 
