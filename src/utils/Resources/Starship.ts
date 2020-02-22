@@ -24,7 +24,6 @@ export default class StarShipResource extends Resource {
   readonly edited: string = '';
 
   // pk tells Rest Hooks how to normalize the data
-  // we miss ids in distinct item
   pk() {
     return this.name.toString();
   }
