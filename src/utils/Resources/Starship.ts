@@ -24,7 +24,7 @@ export default class StarShipResource extends Resource {
   // pk tells Rest Hooks how to normalize the data
   // we miss ids in distinct item
   pk() {
-    return this.url?.toString();
+    return this.name.toString();
   }
 
   static urlRoot = 'https://swapi.co/api/starships/';

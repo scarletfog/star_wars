@@ -3,11 +3,15 @@ import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Typography from "@material-ui/core/Typography";
 import PersonFetch from '../../utils/PersonFetch';
-import PlayButton from '../PlayButton/PlayButton';
-
+import ForcesSelector from '../ForcesSelector/ForcesSelector';
+import ShipFetch from '../../utils/StarshipFetch';
 
 
 const MainContainer = () => {
+
+  const [force, setForce] = useState('');
+
+  console.log(force)
 
   return (
     <>
@@ -17,8 +21,11 @@ const MainContainer = () => {
           component="div"
           style={{ backgroundColor: "#cfe8fc", height: "100vh" }}
         >
-          <PlayButton />
-          <PersonFetch name="1" />
+          <ForcesSelector forceType="ship" onClick={() => setForce("ship")} />
+          <ForcesSelector forceType="person" onClick={() => setForce("person")}  />
+
+          {/* <PersonFetch name="1" />
+          <ShipFetch name="3" /> */}
         </Typography>
       </Container>
     </>
