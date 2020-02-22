@@ -1,4 +1,4 @@
-import { Resource } from 'rest-hooks';
+import { Resource, ReadShape, SchemaDetail, AbstractInstanceType } from 'rest-hooks';
 import { PEOPLE_API } from '../../utils/apis';
 
 export default class PersonResource extends Resource {
@@ -22,8 +22,40 @@ export default class PersonResource extends Resource {
 
   // pk tells Rest Hooks how to normalize the data
   pk() {
-    
-    return this.name?.toString();
+    return this.name ?.toString();
+  }
+
+  static listShape<T extends typeof Resource>(this: T) {
+    return {
+      ...super.listShape(),
+      schema: { results: [this.asSchema()] },
+    };
+  }
+
+  static detailShape<T extends typeof Resource> (this: T): ReadShape<SchemaDetail<AbstractInstanceType<T>>> {
+    const superShape = this.detailShape();
+    return {
+      ...superShape,
+      fetch: async (params: any) => {
+        console.log(params)
+        const { name } = params;
+        const random = Number(name);
+        
+        const perPage = 10;
+
+        const page = Math.ceil(random / perPage);
+        const elem = random % perPage;
+        
+        const response = await superShape.fetch({
+          ...params,
+          url: `${PEOPLE_API}?page=${page}`,
+        });
+
+        console.log();
+        // @ts-ignore
+        return response.results[elem] as T;
+      },
+    };
   }
 
   static urlRoot = PEOPLE_API;
