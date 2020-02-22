@@ -3,9 +3,11 @@ import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Typography from "@material-ui/core/Typography";
 import ForcesSelector from '../ForcesSelector/ForcesSelector';
+import PersonFetch from '../../utils/PersonFetch';
 import ShipFetch from '../../utils/StarshipFetch';
-import { PEOPLE_API } from '../../utils/apis';
-import { STARSHIPS_API } from '../../utils/apis'
+
+import { PEOPLE_API, STARSHIPS_API  } from '../../utils/apis';
+import { PickRandom } from '../../utils/randomizer';
 
 
 const MainContainer = () => {
@@ -14,31 +16,28 @@ const MainContainer = () => {
   const [force, setForce] = useState('');
   const [fetchState, setFetchState] = useState('loading');
 
-  
+
   useEffect(() => {
 
     if (force && force === "person") {
-      console.log("person")
       fetch(PEOPLE_API)
         .then((response) => {
           return response.json();
         })
         .then((items) => {
           setFetchState('finished')
-          console.log(items.count);
+          console.log(PickRandom(items.count));
         });
     }
 
     if (force && force === "ship") {
-      console.log("ship")
-
       fetch(STARSHIPS_API)
         .then((response) => {
           return response.json();
         })
         .then((items) => {
           setFetchState('finished')
-          console.log(items.count);
+          console.log(PickRandom(items.count));
         });
     }
     return undefined
@@ -55,7 +54,8 @@ const MainContainer = () => {
         >
           <ForcesSelector forceType="ship" onClick={setForce} />
           <ForcesSelector forceType="person" onClick={setForce} />
-          {fetchState === 'finished' ? <div>finished</div> : ''}
+          {fetchState === 'finished' && force === "person" ? (<div><PersonFetch name="2" /> <PersonFetch name="3" /> </div>) : ''}
+          {fetchState === 'finished' && force === "ship" ? (<div><ShipFetch name="5" /> <ShipFetch name="2" /> </div>) : ''}
         </Typography>
       </Container>
     </>

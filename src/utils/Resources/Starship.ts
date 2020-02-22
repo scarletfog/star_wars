@@ -1,4 +1,6 @@
 import { Resource } from 'rest-hooks';
+import { STARSHIPS_API } from '../../utils/apis';
+
 
 export default class StarShipResource extends Resource {
 
@@ -27,5 +29,5 @@ export default class StarShipResource extends Resource {
     return this.name.toString();
   }
 
-  static urlRoot = 'https://swapi.co/api/starships/';
+  static urlRoot = STARSHIPS_API;
 }

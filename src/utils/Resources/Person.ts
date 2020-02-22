@@ -1,4 +1,5 @@
 import { Resource } from 'rest-hooks';
+import { PEOPLE_API } from '../../utils/apis';
 
 export default class PersonResource extends Resource {
 
@@ -26,5 +27,5 @@ export default class PersonResource extends Resource {
     return this.name?.toString();
   }
 
-  static urlRoot = 'https://swapi.co/api/people/';
+  static urlRoot = PEOPLE_API;
 }
