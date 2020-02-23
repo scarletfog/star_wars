@@ -1,6 +1,4 @@
-import { useResource } from 'rest-hooks';
 import React from "react";
-import StarshipResource from './Resources/Starship';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -18,9 +16,10 @@ const useStyles = makeStyles({
   },
 });
 
-const ShipFetch = ({ name }: { name: string }) => {
+const ShipFetch = (props: any) => {
 
-  const ship = useResource(StarshipResource.detailShape(), { name });
+  const { name = '', model = '', crew = '' } = props;
+
 
   const classes = useStyles();
   return (
@@ -28,13 +27,13 @@ const ShipFetch = ({ name }: { name: string }) => {
       <Card className={classes.root}>
         <CardContent>
           <Typography className={classes.title} color="textSecondary">
-            Name: {ship.name}
+            Name: {name}
           </Typography>
           <Typography className={classes.pos} color="textSecondary">
-            Model: {ship.model}
+            Model: {model}
           </Typography>
           <Typography className={classes.pos} color="textSecondary">
-            {ship.crew} crew members
+            {crew} crew members
             </Typography>
         </CardContent>
       </Card>

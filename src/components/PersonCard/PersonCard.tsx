@@ -1,11 +1,9 @@
-import { useResource } from 'rest-hooks';
 import React from "react";
-import PersonResource from './Resources/Person';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
+
 
 const useStyles = makeStyles({
   root: {
@@ -19,8 +17,9 @@ const useStyles = makeStyles({
   },
 });
 
-const PersonFetch = ({ name }: { name: string }) => {
-  const person = useResource(PersonResource.detailShape(), { name });
+const PersonCard = (props: any) => {
+
+  const {name = '', gender = '', mass = ''} = props;
 
   const classes = useStyles();
 
@@ -29,13 +28,13 @@ const PersonFetch = ({ name }: { name: string }) => {
       <Card className={classes.root}>
         <CardContent>
           <Typography className={classes.title} color="textSecondary">
-            Name: {person.name}
+            Name: {name}
           </Typography>
           <Typography className={classes.pos} color="textSecondary">
-            Gender: {person.gender}
+            Gender: {gender}
           </Typography>
           <Typography className={classes.pos} color="textSecondary">
-            Mass: {person.mass} kg
+            Mass: {mass} kg
         </Typography>
         </CardContent>
       </Card>
@@ -43,4 +42,4 @@ const PersonFetch = ({ name }: { name: string }) => {
   );
 }
 
-export default PersonFetch;
+export default PersonCard;
