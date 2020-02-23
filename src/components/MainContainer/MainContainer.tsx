@@ -81,10 +81,8 @@ const MainContainer = () => {
           })
           .then(() => {
 
-            shipsArr[0].crew > shipsArr[1].crew ? Object.assign(shipsArr[0], {isWinner: true}) : Object.assign(shipsArr[1], {isWinner: true})
-
-            // add handling draw
-
+            parseInt(shipsArr[0].crew) > parseInt(shipsArr[1].crew) ? Object.assign(shipsArr[0], {isWinner: true}) : Object.assign(shipsArr[1], {isWinner: true})
+            // add handling draw and unknown number of crew members
             console.log(shipsArr)
     
             setShipsData(shipsArr)

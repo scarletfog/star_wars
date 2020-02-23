@@ -14,6 +14,9 @@ const useStyles = makeStyles({
   pos: {
     marginBottom: 12,
   },
+  winner: {
+    color: '#2E8B57',
+  },
 });
 
 const ShipFetch = (props: any) => {
@@ -35,7 +38,7 @@ const ShipFetch = (props: any) => {
           <Typography className={classes.pos} color="textSecondary">
             <b>{crew} </b> crew member(s)
             </Typography>
-          {isWinner && <Typography className={classes.pos} color="textSecondary">
+          {isWinner && <Typography className={classes.winner} color="textSecondary">
             <b> Wins! </b>
           </Typography>}
         </CardContent>
