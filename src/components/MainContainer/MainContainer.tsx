@@ -19,12 +19,14 @@ const MainContainer = () => {
     {
       name: '',
       model: '',
-      crew: ''
+      crew: '',
+      isWinner: false
     },
     {
       name: '',
       model: '',
-      crew: ''
+      crew: '',
+      isWinner: false
     },
   ]);
 
@@ -32,20 +34,17 @@ const MainContainer = () => {
     {
       name: '',
       gender: '',
-      mass: ''
+      mass: '',
+      isWinner: false
     },
     {
       name: '',
       gender: '',
-      mass: ''
+      mass: '',
+      isWinner: false
     },
   ])
   
-  // const getWinner = (indicator: string) => {
-
-  // }
-
-
   useEffect(() => {
 
     const getShip = (shipNumber: number) => {
@@ -81,6 +80,13 @@ const MainContainer = () => {
             shipsArr.push(...ships);
           })
           .then(() => {
+
+            shipsArr[0].crew > shipsArr[1].crew ? Object.assign(shipsArr[0], {isWinner: true}) : Object.assign(shipsArr[1], {isWinner: true})
+
+            // add handling draw
+
+            console.log(shipsArr)
+    
             setShipsData(shipsArr)
             setFetchState('finished')
           })
@@ -98,11 +104,11 @@ const MainContainer = () => {
           component="div"
           style={{ backgroundColor: "#284f72", height: "100vh" }}
         >
-          <h1>I want to play as:</h1>
+          <h1>I want to compare two:</h1>
           <ForcesSelector forceType="ship" onClick={setForce} disabled={!!force} />
           <ForcesSelector forceType="person" onClick={setForce} disabled />
           {/* {fetchState === 'finished' && force === "person" ? (<div><PersonCard/> <PersonCard/> </div>) : ''} */}
-          <div>{fetchState === 'finished' && force === "ship" ? shipsData.map((i:any) =><ShipCard key={i.name} name={i.name} model={i.model} crew={i.crew} />) : ''}</div>
+          <div>{fetchState === 'finished' && force === "ship" ? shipsData.map((i:any) =><ShipCard key={i.name} name={i.name} model={i.model} crew={i.crew} isWinner={i.isWinner} />) : ''}</div>
           {fetchState === 'finished' && force ? (<Button onClick={() => setForce('')} variant="contained" color="secondary"> Play once again </Button>) : null}
         </Typography>
       </Container>

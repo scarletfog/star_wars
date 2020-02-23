@@ -35,6 +35,9 @@ const ShipFetch = (props: any) => {
           <Typography className={classes.pos} color="textSecondary">
             <b>{crew} </b> crew member(s)
             </Typography>
+          {isWinner && <Typography className={classes.pos} color="textSecondary">
+            <b> Wins! </b>
+          </Typography>}
         </CardContent>
       </Card>
     </div>
