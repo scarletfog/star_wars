@@ -4,26 +4,22 @@
 // based on exposed api, presumed 10 items per page
 const perPage = 10;
 
-export const PickRandomItem = (min: number, max: number, apiUrl: string) => {
-
+export const PickRandomItem = (min: number, max: number, excluded: number[] = []): number => {
   let random = Math.floor(Math.random() * (max - min + 1) + min);
 
+  if (excluded.includes(random)) {
+    return PickRandomItem(min, max, excluded)
+  }
+
+  return random;
+}
+
+export const PickPaginated = (random: number): {page: number, elem: number} => {
   const page = Math.ceil(random / perPage);
   const elem = random % perPage;
-
-  // const randomizedItemUrl = `${apiUrl}?page=${page}`;
 
   return {
     page,
     elem,
   }
-
-  // return fetch(randomizedItemUrl)
-  //   .then((response) => {
-  //     return response.json();
-  //   })
-  //   .then((items) => {
-  //     return items.results[elem]
-  //   });
-
 }

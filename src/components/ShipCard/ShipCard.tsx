@@ -6,10 +6,10 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 200
+    marginLeft: 10,
   },
   title: {
-    fontSize: 14,
+    fontSize: 18,
   },
   pos: {
     marginBottom: 12,
@@ -18,7 +18,7 @@ const useStyles = makeStyles({
 
 const ShipFetch = (props: any) => {
 
-  const { name = '', model = '', crew = '' } = props;
+  const { name = '', model = '', crew = '', isWinner = false } = props;
 
 
   const classes = useStyles();
@@ -27,13 +27,13 @@ const ShipFetch = (props: any) => {
       <Card className={classes.root}>
         <CardContent>
           <Typography className={classes.title} color="textSecondary">
-            Name: {name}
+            <b>Name: </b> {name}
           </Typography>
           <Typography className={classes.pos} color="textSecondary">
-            Model: {model}
+            <b>Model: </b> {model}
           </Typography>
           <Typography className={classes.pos} color="textSecondary">
-            {crew} crew members
+            <b>{crew} </b> crew member(s)
             </Typography>
         </CardContent>
       </Card>
