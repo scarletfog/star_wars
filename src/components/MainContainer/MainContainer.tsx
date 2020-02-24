@@ -12,7 +12,13 @@ import { getItem } from '../../utils/paginatedApi';
 
 import { PickRandomItem, PickPaginated } from '../../utils/randomizer';
 
+const MATCH_WINNER_PLAYER_A = 'MATCH_WINNER_PLAYER_A';
+const MATCH_WINNER_PLAYER_B = 'MATCH_WINNER_PLAYER_B';
+const MATCH_WINNER_DRAW = 'MATCH_WINNER_DRAW';
+const MATCH_WINNER_NONE = 'MATCH_WINNER_NONE';
+
 const MainContainer = () => {
+  const [matchWinner, setMatchWinner] = useState('');
   const [force, setForce] = useState('');
   const [fetchState, setFetchState] = useState('loading');
   const [shipsData, setShipsData] = useState([
@@ -20,13 +26,11 @@ const MainContainer = () => {
       name: '',
       model: '',
       crew: '',
-      isWinner: false
     },
     {
       name: '',
       model: '',
       crew: '',
-      isWinner: false
     },
   ]);
 
@@ -44,7 +48,7 @@ const MainContainer = () => {
       isWinner: false
     },
   ])
-  
+
   useEffect(() => {
 
     const getShip = (shipNumber: number) => {
@@ -62,9 +66,6 @@ const MainContainer = () => {
       //       setFetchState('finished')
       //     });
       // }
-  const shipsArr: any = [];
-
-
       if (force === "ship") {
         fetch(STARSHIPS_API)
           .then((response) => {
@@ -76,16 +77,32 @@ const MainContainer = () => {
 
             return Promise.all([getShip(shipA), getShip(shipB)])
           })
-          .then((ships) => {
-            shipsArr.push(...ships);
-          })
-          .then(() => {
+          .then((shipsArr) => {
+            const [
+              shipA,
+              shipB,
+            ] = shipsArr
 
-            parseInt(shipsArr[0].crew) > parseInt(shipsArr[1].crew) ? Object.assign(shipsArr[0], {isWinner: true}) : Object.assign(shipsArr[1], {isWinner: true})
-            // add handling draw and unknown number of crew members
-            console.log(shipsArr)
-    
-            setShipsData(shipsArr)
+            const crewA =  parseInt(shipA.crew);
+            const crewB =  parseInt(shipB.crew);
+
+            // crewA > parseInt(shipsArr[1].crew) ? Object.assign(shipsArr[0], { isWinner: true }) : Object.assign(shipsArr[1], { isWinner: true })
+
+            if (crewA > crewB) {
+              setMatchWinner(MATCH_WINNER_PLAYER_A)
+            } else if (crewA < crewB) {
+              setMatchWinner(MATCH_WINNER_PLAYER_B)
+            } else if (crewA === crewB) {
+              setMatchWinner(MATCH_WINNER_DRAW)
+            } else {
+              setMatchWinner(MATCH_WINNER_NONE)
+            }
+
+            // add handling MATCH_WINNER_draw and unknown number of crew members
+            setShipsData([
+              {...shipA, playerName: MATCH_WINNER_PLAYER_A},
+              {...shipB, playerName: MATCH_WINNER_PLAYER_B},
+            ])
             setFetchState('finished')
           })
       }
@@ -106,7 +123,9 @@ const MainContainer = () => {
           <ForcesSelector forceType="ship" onClick={setForce} disabled={!!force} />
           <ForcesSelector forceType="person" onClick={setForce} disabled />
           {/* {fetchState === 'finished' && force === "person" ? (<div><PersonCard/> <PersonCard/> </div>) : ''} */}
-          <div>{fetchState === 'finished' && force === "ship" ? shipsData.map((i:any) =><ShipCard key={i.name} name={i.name} model={i.model} crew={i.crew} isWinner={i.isWinner} />) : ''}</div>
+          <div>{fetchState === 'finished' && force === "ship" ? shipsData.map((i: any) => <ShipCard key={i.name} name={i.name} model={i.model} crew={i.crew} isWinner={i.playerName === matchWinner} />) : ''}</div>
+          {matchWinner === MATCH_WINNER_NONE && 'cant speficy winner'}
+          {matchWinner === MATCH_WINNER_DRAW && 'MATCH_WINNER_DRAW'}
           {fetchState === 'finished' && force ? (<Button onClick={() => setForce('')} variant="contained" color="secondary"> Play once again </Button>) : null}
         </Typography>
       </Container>
