@@ -1,6 +1,6 @@
 .SpinnerOverlay {
   height: 100%;
-  background-color: #fff;
+  background: rgba(255,255,255,.6);
   width: 100%;
   left: 0;
   top: 0;

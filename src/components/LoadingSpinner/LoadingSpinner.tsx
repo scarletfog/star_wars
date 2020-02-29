@@ -6,7 +6,7 @@ const LoadingSpinner = () => {
 
   return (
     <div className="SpinnerOverlay">
-      <CircularProgress />
+      <CircularProgress color="secondary" />
     </div>
   );
 }
