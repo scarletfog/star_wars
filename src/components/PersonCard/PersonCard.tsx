@@ -15,11 +15,14 @@ const useStyles = makeStyles({
   pos: {
     marginBottom: 12,
   },
+  winner: {
+    color: '#2E8B57',
+  },
 });
 
 const PersonCard = (props: any) => {
 
-  const {name = '', gender = '', mass = ''} = props;
+  const { name = '', gender = '', mass = '', isWinner = 'false' } = props;
 
   const classes = useStyles();
 
@@ -28,14 +31,17 @@ const PersonCard = (props: any) => {
       <Card className={classes.root}>
         <CardContent>
           <Typography className={classes.title} color="textSecondary">
-            Name: {name}
+            <b>Name: </b> {name}
           </Typography>
           <Typography className={classes.pos} color="textSecondary">
-            Gender: {gender}
+            <b>Gender: </b> {gender}
           </Typography>
           <Typography className={classes.pos} color="textSecondary">
-            Mass: {mass} kg
-        </Typography>
+            <b>Mass: </b> {mass}
+          </Typography>
+          {isWinner && <Typography className={classes.winner} color="textSecondary">
+            <b> Wins! </b>
+          </Typography>}
         </CardContent>
       </Card>
     </div>
