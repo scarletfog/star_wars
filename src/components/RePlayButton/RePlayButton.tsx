@@ -7,8 +7,8 @@ const PlayButton = () => {
 
   return (
     <Button variant="contained" color="primary">
-    {isReplay? 'Play again' : 'Play'}
-  </Button>
+      {isReplay? 'Play again' : 'Play'}
+    </Button>
   );
 };
 

@@ -4,6 +4,8 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 
+import { ShipDataType } from '../../utils/playerModels';
+
 const useStyles = makeStyles({
   root: {
     marginLeft: 10,
@@ -19,26 +21,23 @@ const useStyles = makeStyles({
   },
 });
 
-const ShipFetch = (props: any) => {
-
-  const { name = '', model = '', crew = '', isWinner = false } = props;
-
-
+const ShipCard = (props: ShipDataType & { isWinner: boolean }) => {
   const classes = useStyles();
+
   return (
     <div style={{ display: "inline-block" }}>
       <Card className={classes.root}>
         <CardContent>
           <Typography className={classes.title} color="textSecondary">
-            <b>Name: </b> {name}
+            <b>Name: </b> {props.name}
           </Typography>
           <Typography className={classes.pos} color="textSecondary">
-            <b>Model: </b> {model}
+            <b>Model: </b> {props.model}
           </Typography>
           <Typography className={classes.pos} color="textSecondary">
-            <b>{crew} </b> crew member(s)
+            <b>{props.crew} </b> crew member(s)
             </Typography>
-          {isWinner && <Typography className={classes.winner} color="textSecondary">
+          {props.isWinner && <Typography className={classes.winner} color="textSecondary">
             <b> Wins! </b>
           </Typography>}
         </CardContent>
@@ -47,4 +46,4 @@ const ShipFetch = (props: any) => {
   );
 }
 
-export default ShipFetch;
+export default ShipCard;

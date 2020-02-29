@@ -1,13 +1,11 @@
-export const personDataModel = {
-  name: '',
-  gender: '',
-  mass: '',
-  isWinner: false
-};
+export type PersonDataType = {
+  name: string,
+  gender: string,
+  mass: number,
+}
 
-export const shipDataModel = {
-  name: '',
-  model: '',
-  crew: '',
-  isWinner: false
+export type ShipDataType = {
+  name: string,
+  model: string,
+  crew: number,
 }

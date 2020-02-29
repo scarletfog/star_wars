@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-
+import { PersonDataType } from '../../utils/playerModels';
 
 const useStyles = makeStyles({
   root: {
@@ -20,10 +20,7 @@ const useStyles = makeStyles({
   },
 });
 
-const PersonCard = (props: any) => {
-
-  const { name = '', gender = '', mass = '', isWinner = 'false' } = props;
-
+const PersonCard = (props: PersonDataType & { isWinner: boolean } ) => {
   const classes = useStyles();
 
   return (
@@ -31,15 +28,15 @@ const PersonCard = (props: any) => {
       <Card className={classes.root}>
         <CardContent>
           <Typography className={classes.title} color="textSecondary">
-            <b>Name: </b> {name}
+            <b>Name: </b> {props.name}
           </Typography>
           <Typography className={classes.pos} color="textSecondary">
-            <b>Gender: </b> {gender}
+            <b>Gender: </b> {props.gender}
           </Typography>
           <Typography className={classes.pos} color="textSecondary">
-            <b>Mass: </b> {mass}
+            <b>Mass: </b> {props.mass}
           </Typography>
-          {isWinner && <Typography className={classes.winner} color="textSecondary">
+          {props.isWinner && <Typography className={classes.winner} color="textSecondary">
             <b> Wins! </b>
           </Typography>}
         </CardContent>
