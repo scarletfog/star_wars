@@ -1,3 +1,6 @@
+// cannot rely on the range, item ID can exceed the the total count, for example: count: 37, person ID: 88
+// based on the API presumed 10 items per page
+
 const perPage = 10;
 const API = 'https://swapi.co/api';
 
