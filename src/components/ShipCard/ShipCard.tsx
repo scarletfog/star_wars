@@ -25,7 +25,7 @@ const ShipCard = (props: ShipDataType & { isWinner: boolean }) => {
   const classes = useStyles();
 
   return (
-    <div style={{ display: "inline-block" }}>
+    <div style={{ display: "inline-block", margin: "10px" }}>
       <Card className={classes.root}>
         <CardContent>
           <Typography className={classes.title} color="textSecondary" data-testid="ship_card_name">

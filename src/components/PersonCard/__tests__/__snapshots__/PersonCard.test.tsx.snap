@@ -6,6 +6,7 @@ exports[`PersonCard should render PersonCard component 1`] = `
   style={
     Object {
       "display": "inline-block",
+      "margin": "10px",
     }
   }
 >

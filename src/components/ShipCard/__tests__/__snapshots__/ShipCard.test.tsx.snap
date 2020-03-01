@@ -5,6 +5,7 @@ exports[`ShipCard should render ShipCard component 1`] = `
   style={
     Object {
       "display": "inline-block",
+      "margin": "10px",
     }
   }
 >
