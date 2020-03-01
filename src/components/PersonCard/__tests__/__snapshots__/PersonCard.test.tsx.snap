@@ -2,6 +2,7 @@
 
 exports[`PersonCard should render PersonCard component 1`] = `
 <div
+  data-testid="person_card"
   style={
     Object {
       "display": "inline-block",

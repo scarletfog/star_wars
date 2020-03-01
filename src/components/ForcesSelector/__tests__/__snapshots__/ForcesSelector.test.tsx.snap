@@ -3,6 +3,7 @@
 exports[`ForcesSelector should render ForcesSelector component 1`] = `
 <button
   className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+  data-testid="People_button"
   disabled={false}
   onBlur={[Function]}
   onClick={[Function]}

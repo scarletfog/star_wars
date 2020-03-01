@@ -5,12 +5,12 @@ import { render, getByTestId } from "@testing-library/react";
 import ShipCard from '../ShipCard';
 
 describe("ShipCard", () => {
-  it("should render ShipCard component", async () => {
+  it("should render ShipCard component", () => {
     const tree = TestRenderer.create(<ShipCard name="testShipName" model="testShipModel" crew={34} isWinner={false} />);
     expect(tree).toMatchSnapshot();
   });
 
-  it("should have name displayed", async () => {
+  it("should have name displayed", () => {
     const { container } = render(
       <ShipCard name="testShipName" model="testShipModel" crew={34} isWinner={false} />
     );
@@ -20,7 +20,7 @@ describe("ShipCard", () => {
     );
   });
 
-  it("should have model displayed", async () => {
+  it("should have model displayed", () => {
     const { container } = render(
       <ShipCard name="testShipName" model="testShipModel" crew={34} isWinner={false} />
     );
@@ -30,7 +30,7 @@ describe("ShipCard", () => {
     );
   });
 
-  it("should have crew number displayed", async () => {
+  it("should have crew number displayed", () => {
     const { container } = render(
       <ShipCard name="testShipName" model="testShipModel" crew={34} isWinner={false} />
     );
@@ -41,7 +41,7 @@ describe("ShipCard", () => {
     );
   });
 
-  it("should display winner section", async () => {
+  it("should display winner section", () => {
     const { container } = render(
       <ShipCard name="testShipName" model="testShipModel" crew={34} isWinner={true} />
     );

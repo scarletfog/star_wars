@@ -5,12 +5,12 @@ import { render } from "@testing-library/react";
 import ForcesSelector from '../ForcesSelector';
 
 describe("ForcesSelector", () => {
-  it("should render ForcesSelector component", async () => {
+  it("should render ForcesSelector component", () => {
     const tree = TestRenderer.create(<ForcesSelector />);
     expect(tree).toMatchSnapshot();
   });
 
-  it("should render ship version of a component", async () => {
+  it("should render ship version of a component", () => {
     const { container } = render(
       <ForcesSelector forceType="ship" />
     );
@@ -19,7 +19,7 @@ describe("ForcesSelector", () => {
     );
   });
 
-  it("should render people version of a component", async () => {
+  it("should render people version of a component", () => {
     const { container } = render(
       <ForcesSelector forceType="anythingElse" />
     );

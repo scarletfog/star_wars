@@ -78,9 +78,9 @@ const MainContainer = () => {
         >
           <h1 className="Header">I want to compare two:</h1>
 
-          <ForcesSelector forceType={ForceType.SHIP} onClick={handleSelectForce} disabled={!!force} />
-          <ForcesSelector forceType={ForceType.PERSON} onClick={handleSelectForce} disabled={!!force} />
-          {fetchState === FetchingStatus.LOADING && <LoadingSpinner />}
+          <div data-testid="forces_selector"><ForcesSelector forceType={ForceType.SHIP} onClick={handleSelectForce} disabled={!!force} />
+            <ForcesSelector forceType={ForceType.PERSON} onClick={handleSelectForce} disabled={!!force} /></div>
+          {fetchState === FetchingStatus.LOADING && <LoadingSpinner data-testid="spinner_overlay" />}
           {fetchState === FetchingStatus.FINISHED &&
             <div>
               {
@@ -97,9 +97,9 @@ const MainContainer = () => {
               }
             </div>
           }
-          <div>{matchWinner === MatchStatus.WINNER_NONE && 'Cannot specify the winner, at least one value is unknown or something went wrong'}</div>
-          <div>{matchWinner === MatchStatus.WINNER_DRAW && 'The match is a draw'}</div>
-          {matchWinner ? (<Button onClick={() => resetGame()} variant="contained" color="secondary"> Play once again </Button>) : null}
+          <div style={{ color: "#fff", margin: "10px" }} data-testid="none_winner">{matchWinner === MatchStatus.WINNER_NONE && 'Cannot specify the winner, at least one value is unknown or something went wrong'}</div>
+          <div style={{ color: "#fff", margin: "10px" }} data-testid="match_draw">{matchWinner === MatchStatus.WINNER_DRAW && 'The match is a draw'}</div>
+          {matchWinner ? (<Button onClick={() => resetGame()} variant="contained" color="secondary" data-testid="play_button"> Play once again </Button>) : null}
         </Typography>
       </Container>
     </>

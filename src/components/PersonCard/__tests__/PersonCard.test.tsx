@@ -5,12 +5,12 @@ import { render, getByTestId } from "@testing-library/react";
 import PersonCard from '../PersonCard';
 
 describe("PersonCard", () => {
-  it("should render PersonCard component", async () => {
+  it("should render PersonCard component", () => {
     const tree = TestRenderer.create(<PersonCard name="testPersonName" gender="male" mass={80} isWinner={true} />);
     expect(tree).toMatchSnapshot();
   });
 
-  it("should have name displayed", async () => {
+  it("should have name displayed", () => {
     const { container } = render(
       <PersonCard name="testPersonName" gender="male" mass={80} isWinner={true} />
     );
@@ -20,7 +20,7 @@ describe("PersonCard", () => {
     );
   });
 
-  it("should have model displayed", async () => {
+  it("should have model displayed",() => {
     const { container } = render(
       <PersonCard name="testPersonName" gender="male" mass={80} isWinner={true} />
     );
@@ -30,7 +30,7 @@ describe("PersonCard", () => {
     );
   });
 
-  it("should have crew number displayed", async () => {
+  it("should have crew number displayed", () => {
     const { container } = render(
       <PersonCard name="testPersonName" gender="male" mass={80} isWinner={true} />
     );
@@ -41,7 +41,7 @@ describe("PersonCard", () => {
     );
   });
 
-  it("should display winner section", async () => {
+  it("should display winner section", () => {
     const { container } = render(
       <PersonCard name="testPersonName" gender="male" mass={80} isWinner={true} />
     );

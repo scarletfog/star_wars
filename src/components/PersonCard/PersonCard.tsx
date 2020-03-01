@@ -24,7 +24,7 @@ const PersonCard = (props: PersonDataType & { isWinner: boolean } ) => {
   const classes = useStyles();
 
   return (
-    <div style={{ display: "inline-block" }}>
+    <div style={{ display: "inline-block" }} data-testid="person_card">
       <Card className={classes.root}>
         <CardContent>
           <Typography className={classes.title} color="textSecondary" data-testid="person_card_name">

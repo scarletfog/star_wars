@@ -5,12 +5,12 @@ import { render, getByTestId } from "@testing-library/react";
 import LoadingSpinner from '../LoadingSpinner';
 
 describe("LoadingSpinner", () => {
-  it("should render LoadingSpinner component", async () => {
+  it("should render LoadingSpinner component", () => {
     const tree = TestRenderer.create(<LoadingSpinner />);
     expect(tree).toMatchSnapshot();
   });
 
-  it("should render an overlay div", async () => {
+  it("should render an overlay div", () => {
     const { container } = render(
       <LoadingSpinner />
     );
@@ -18,7 +18,7 @@ describe("LoadingSpinner", () => {
     expect(element).toBeTruthy()
   });
 
-  it("should render the spinner", async () => {
+  it("should render the spinner", () => {
     const { container } = render(
       <LoadingSpinner />
     );
