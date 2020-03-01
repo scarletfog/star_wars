@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PersonCard should render PersonCard component 1`] = `
+<div
+  style={
+    Object {
+      "display": "inline-block",
+    }
+  }
+>
+  <div
+    className="MuiPaper-root MuiCard-root makeStyles-root-1 MuiPaper-elevation1 MuiPaper-rounded"
+  >
+    <div
+      className="MuiCardContent-root"
+    >
+      <p
+        className="MuiTypography-root makeStyles-title-2 MuiTypography-body1 MuiTypography-colorTextSecondary"
+        data-testid="person_card_name"
+      >
+        <b>
+          Name: 
+        </b>
+         
+        testPersonName
+      </p>
+      <p
+        className="MuiTypography-root makeStyles-pos-3 MuiTypography-body1 MuiTypography-colorTextSecondary"
+        data-testid="person_card_gender"
+      >
+        <b>
+          Gender: 
+        </b>
+         
+        male
+      </p>
+      <p
+        className="MuiTypography-root makeStyles-pos-3 MuiTypography-body1 MuiTypography-colorTextSecondary"
+        data-testid="person_card_mass"
+      >
+        <b>
+          Mass: 
+        </b>
+         
+        80
+      </p>
+      <p
+        className="MuiTypography-root makeStyles-winner-4 MuiTypography-body1 MuiTypography-colorTextSecondary"
+        data-testid="person_card_winner"
+      >
+        <b>
+           Wins! 
+        </b>
+      </p>
+    </div>
+  </div>
+</div>
+`;

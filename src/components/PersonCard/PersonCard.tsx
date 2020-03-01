@@ -27,16 +27,16 @@ const PersonCard = (props: PersonDataType & { isWinner: boolean } ) => {
     <div style={{ display: "inline-block" }}>
       <Card className={classes.root}>
         <CardContent>
-          <Typography className={classes.title} color="textSecondary">
+          <Typography className={classes.title} color="textSecondary" data-testid="person_card_name">
             <b>Name: </b> {props.name}
           </Typography>
-          <Typography className={classes.pos} color="textSecondary">
+          <Typography className={classes.pos} color="textSecondary" data-testid="person_card_gender">
             <b>Gender: </b> {props.gender}
           </Typography>
-          <Typography className={classes.pos} color="textSecondary">
+          <Typography className={classes.pos} color="textSecondary" data-testid="person_card_mass">
             <b>Mass: </b> {props.mass}
           </Typography>
-          {props.isWinner && <Typography className={classes.winner} color="textSecondary">
+          {props.isWinner && <Typography className={classes.winner} color="textSecondary" data-testid="person_card_winner">
             <b> Wins! </b>
           </Typography>}
         </CardContent>

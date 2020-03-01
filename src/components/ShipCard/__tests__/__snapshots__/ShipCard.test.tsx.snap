@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ShipCard should render ShipCard component 1`] = `
+<div
+  style={
+    Object {
+      "display": "inline-block",
+    }
+  }
+>
+  <div
+    className="MuiPaper-root MuiCard-root makeStyles-root-1 MuiPaper-elevation1 MuiPaper-rounded"
+  >
+    <div
+      className="MuiCardContent-root"
+    >
+      <p
+        className="MuiTypography-root makeStyles-title-2 MuiTypography-body1 MuiTypography-colorTextSecondary"
+        data-testid="ship_card_name"
+      >
+        <b>
+          Name: 
+        </b>
+         
+        testShipName
+      </p>
+      <p
+        className="MuiTypography-root makeStyles-pos-3 MuiTypography-body1 MuiTypography-colorTextSecondary"
+        data-testid="ship_card_model"
+      >
+        <b>
+          Model: 
+        </b>
+         
+        testShipModel
+      </p>
+      <p
+        className="MuiTypography-root makeStyles-pos-3 MuiTypography-body1 MuiTypography-colorTextSecondary"
+        data-testid="ship_card_crew"
+      >
+        <b>
+          34
+           
+        </b>
+         crew member(s)
+      </p>
+    </div>
+  </div>
+</div>
+`;

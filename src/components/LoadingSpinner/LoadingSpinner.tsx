@@ -5,8 +5,8 @@ import './LoadingSpinner.css';
 const LoadingSpinner = () => {
 
   return (
-    <div className="SpinnerOverlay">
-      <CircularProgress color="secondary" />
+    <div className="SpinnerOverlay" data-testid="spinner_overlay">
+      <CircularProgress color="secondary" data-testid="spinner" />
     </div>
   );
 }

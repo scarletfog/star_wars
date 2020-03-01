@@ -28,16 +28,16 @@ const ShipCard = (props: ShipDataType & { isWinner: boolean }) => {
     <div style={{ display: "inline-block" }}>
       <Card className={classes.root}>
         <CardContent>
-          <Typography className={classes.title} color="textSecondary">
+          <Typography className={classes.title} color="textSecondary" data-testid="ship_card_name">
             <b>Name: </b> {props.name}
           </Typography>
-          <Typography className={classes.pos} color="textSecondary">
+          <Typography className={classes.pos} color="textSecondary" data-testid="ship_card_model">
             <b>Model: </b> {props.model}
           </Typography>
-          <Typography className={classes.pos} color="textSecondary">
+          <Typography className={classes.pos} color="textSecondary" data-testid="ship_card_crew">
             <b>{props.crew} </b> crew member(s)
             </Typography>
-          {props.isWinner && <Typography className={classes.winner} color="textSecondary">
+          {props.isWinner && <Typography className={classes.winner} color="textSecondary" data-testid="ship_card_winner">
             <b> Wins! </b>
           </Typography>}
         </CardContent>
